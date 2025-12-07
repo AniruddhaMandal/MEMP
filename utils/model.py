@@ -1,4 +1,3 @@
-from Networks.message_passing_lstm import MessagePassingLSTM
 from Networks.memp import MeMP
 from Networks.vanilla import Vanilla
 
@@ -13,15 +12,6 @@ def build_model(cfg,signal=False):
     type = cfg.Model.type
     encoder = cfg.Model.encoder
 
-    if(cfg.Model.framework == "message-passing-lstm"):
-        return MessagePassingLSTM(in_dim=in_dim, 
-                                  out_dim=out_dim, 
-                                  hidden_dim=hidden_dim,
-                                  hops=hops,
-                                  dropout=dropout_frac,
-                                  type=type,
-                                  encoder=encoder)
-    
     if(cfg.Model.framework == "vanilla"):
         return Vanilla(in_dim=in_dim,
                        out_dim=out_dim,
