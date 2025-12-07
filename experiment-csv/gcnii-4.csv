@@ -1,0 +1,7 @@
+DatasetName,Framework,Type,Hops,Outdir,Log
+MUTAG, MeMP, GCNII, 4, GCNII-4, False
+ENZYMES, MeMP, GCNII, 4, GCNII-4, False
+PROTEINS, MeMP, GCNII, 4, GCNII-4, False
+COLLAB, MeMP, GCNII, 4, GCNII-4, False
+IMDB-BINARY, MeMP, GCNII, 4, GCNII-4, False
+REDDIT-BINARY, MeMP, GCNII, 4, GCNII-4, False

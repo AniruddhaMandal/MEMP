@@ -1,0 +1,7 @@
+DatasetName,Framework,Type,Hops,Outdir,Log
+MUTAG, MeMP, GAT, 10, GAT-10, False
+ENZYMES, MeMP, GAT, 10, GAT-10, False
+PROTEINS, MeMP, GAT, 10, GAT-10, False
+COLLAB, MeMP, GAT, 10, GAT-10, False
+IMDB-BINARY, MeMP, GAT, 10, GAT-10, False
+REDDIT-BINARY, MeMP, GAT, 10, GAT-10, False

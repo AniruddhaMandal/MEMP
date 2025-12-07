@@ -1,0 +1,17 @@
+__pycache__/
+Dataset/
+Results*/
+.temp/
+.log/
+result**/
+**.pt
+fakecfg.yaml
+note.txt
+delme.py
+.vscode
+docs/build
+delme/
+.ipynb_checkpoints/
+explore.ipynb
+csv_result.txt
+plots/output

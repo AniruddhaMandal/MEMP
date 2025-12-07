@@ -1,0 +1,33 @@
+Data:
+  batch_size: 128
+  input_dim: 9
+  name: Peptides-func
+  output_dim: 10
+  train_frac: 0.8
+  val_frac: 0.1
+Device: cuda
+Model:
+  dropout_frac: 0.5
+  encoder: Atom
+  framework: vanilla
+  graph_pooling: mean
+  hidden_dim: 300
+  hops: 5
+  type: GCN
+Optimizer:
+  eval_after_epoch: 2
+  learning_rate: 0.001
+  lr_decay_factor: 0.8
+  min_lr: 1e-5
+  reduce_factor: 0.5
+  schedule_patience: 20
+  type: AdamW
+  weight_decay: 0.0
+Scheduler:
+  mode: min
+  name: reduce_lr_on_plateau
+  reduce_factor: 0.5
+Train:
+  loss_fn: multilable-cross-entropy
+  max_epoches: 500
+  metric: average-precision

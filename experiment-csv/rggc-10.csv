@@ -1,0 +1,7 @@
+DatasetName,Framework,Type,Hops,Outdir,Log
+MUTAG, MeMP, RGGC, 10, RGGC-10, False
+ENZYMES, MeMP, RGGC, 10, RGGC-10, False
+PROTEINS, MeMP, RGGC, 10, RGGC-10, False
+COLLAB, MeMP, RGGC, 10, RGGC-10, False
+IMDB-BINARY, MeMP, RGGC, 10, RGGC-10, False
+REDDIT-BINARY, MeMP, RGGC, 10, RGGC-10, False

@@ -1,0 +1,7 @@
+DatasetName,Framework,Type,Hops,Outdir,Log
+MUTAG, MeMP, GIN, 4, GIN-4, False
+ENZYMES, MeMP, GIN, 4, GIN-4, False
+PROTEINS, MeMP, GIN, 4, GIN-4, False
+COLLAB, MeMP, GIN, 4, GIN-4, False
+IMDB-BINARY, MeMP, GIN, 4, GIN-4, False
+REDDIT-BINARY, MeMP, GIN, 4, GIN-4, False

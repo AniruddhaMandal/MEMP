@@ -1,0 +1,30 @@
+Data:
+  batch_size: 64
+  input_dim: 1
+  name: IMDB-BINARY
+  node_feature_fill: all-one-feature
+  output_dim: 2
+  train_frac: 0.8
+  val_frac: 0.1
+Device: cuda
+Model:
+  dropout_frac: 0.5
+  encoder: None
+  framework: vanilla
+  hidden_dim: 64
+  hops: 4
+  type: GSAGE
+Optimizer:
+  eval_after_epoch: 2
+  learning_rate: 0.001
+  lr_decay_factor: 0.8
+  type: Adam
+  weight_decay: 1e-5
+Scheduler:
+  mode: min
+  name: reduce_lr_on_plateau
+  reduce_factor: 0.5
+Train:
+  loss_fn: cross-entropy
+  max_epoches: 200
+  metric: accuracy
