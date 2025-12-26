@@ -46,6 +46,8 @@ def set_config(cfg, args):
         cfg.Model.type = args.type
     if(args.framework != None):
         cfg.Model.framework = args.framework
+    if(args.rewiring != None):
+        cfg.Data.rewiring = args.rewiring
 
     # type casting 
     cfg.Optimizer.weight_decay = float(cfg.Optimizer.weight_decay)

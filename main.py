@@ -30,6 +30,8 @@ if __name__ == "__main__":
     parser.add_argument("--outdir", help="Output directory")
     parser.add_argument("--split", type=int, default=25, help="Number of experiment splits.")
     parser.add_argument("--framework", type=str)
+    parser.add_argument("--rewiring", type=str, choices=['sdrf', 'fosr'], default=None,
+                        help="Graph rewiring method: 'sdrf' or 'fosr' (default: None)")
     args = parser.parse_args()
 
     cfg = load_config(args.cfg)

@@ -4,6 +4,7 @@ from torch_geometric.datasets import LRGBDataset
 from torch.utils.data import random_split
 from torch_geometric.loader import DataLoader
 from utils.preprocess import all_one_encoder
+from utils.rewiring import apply_rewiring
 
 def get_dataset(cfg):
     """ Finds out the dataset from dataset name of `cfg`.
@@ -23,6 +24,45 @@ def get_dataset(cfg):
     if graphs[0].x == None:
         if cfg.Data.node_feature_fill == 'all-one-feature':
             graphs = all_one_encoder(graphs)
+
+    # Apply graph rewiring if specified in config
+    if hasattr(cfg.Data, 'rewiring') and cfg.Data.rewiring is not None:
+        print(f"Applying {cfg.Data.rewiring.upper()} graph rewiring...")
+
+        if cfg.Data.rewiring == 'sdrf':
+            # SDRF parameters
+            loops = getattr(cfg.Data, 'rewiring_loops', 10)
+            tau = getattr(cfg.Data, 'rewiring_tau', 1.0)
+            remove_edges = getattr(cfg.Data, 'rewiring_remove_edges', False)
+            use_cuda = getattr(cfg.Data, 'rewiring_use_cuda', False)
+
+            graphs = apply_rewiring(
+                graphs,
+                method='sdrf',
+                loops=loops,
+                tau=tau,
+                remove_edges=remove_edges,
+                is_undirected=True,
+                use_cuda=use_cuda
+            )
+            print(f"  SDRF: loops={loops}, tau={tau}, remove_edges={remove_edges}, use_cuda={use_cuda}")
+
+        elif cfg.Data.rewiring == 'fosr':
+            # FoSR parameters
+            num_iterations = getattr(cfg.Data, 'rewiring_num_iterations', 50)
+
+            graphs = apply_rewiring(
+                graphs,
+                method='fosr',
+                num_iterations=num_iterations
+            )
+            print(f"  FoSR: num_iterations={num_iterations}")
+
+        else:
+            raise ValueError(f"Unknown rewiring method: {cfg.Data.rewiring}. Choose 'sdrf' or 'fosr'.")
+
+        print(f"  Rewiring complete! Total graphs: {len(graphs)}")
+
     return graphs
 
 def get_dataloaders(cfg):
