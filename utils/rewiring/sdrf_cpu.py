@@ -251,4 +251,8 @@ def sdrf(
                 if can_add is False:
                     break
 
-    return from_networkx(G)
+    # Create rewired graph and preserve node features from original data
+    rewired = from_networkx(G)
+    rewired.x = data.x
+    rewired.y = data.y if hasattr(data, 'y') else None
+    return rewired
